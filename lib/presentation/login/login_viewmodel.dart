@@ -16,7 +16,7 @@ class LoginViewModel extends BaseViewModel
 
   var loginObject = LoginObject("", "");
 
-  LoginUseCase? _loginUseCase; //todo remove
+  LoginUseCase _loginUseCase;
   LoginViewModel(this._loginUseCase);
 
   //inputs
