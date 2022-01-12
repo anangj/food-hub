@@ -11,6 +11,7 @@ class ColorManagar {
   static Color grey2 = HexColor.fromHex("#797979");
   static Color white = HexColor.fromHex("#FFFFFF");
   static Color error = HexColor.fromHex("#E61F34");
+  static Color black = HexColor.fromHex("#000000");
 }
 
 //converting color to HexColor
