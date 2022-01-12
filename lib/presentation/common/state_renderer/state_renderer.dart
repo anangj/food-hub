@@ -1,9 +1,6 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tut_app/data/mapper/mapper.dart';
-import 'package:tut_app/data/network/failure.dart';
 import 'package:tut_app/presentation/resources/assets_manager.dart';
 import 'package:tut_app/presentation/resources/color_manager.dart';
 import 'package:tut_app/presentation/resources/font_manager.dart';

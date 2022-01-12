@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:tut_app/domain/usecase/login_usecase.dart';
 import 'package:tut_app/presentation/base/base_view_model.dart';
 import 'package:tut_app/presentation/common/freezed_data_classes.dart';
+import 'package:tut_app/presentation/common/state_renderer/state_renderer.dart';
+import 'package:tut_app/presentation/common/state_renderer/state_renderer_impl.dart';
 
 class LoginViewModel extends BaseViewModel
     with LoginViewModelInputs, LoginViewModelOutputs {
@@ -29,7 +31,8 @@ class LoginViewModel extends BaseViewModel
 
   @override
   void start() {
-    // TODO: implement start
+    //view tell state rendere, to show the content of screen
+    inputState.add(ContentState());
   }
 
   @override
@@ -42,16 +45,21 @@ class LoginViewModel extends BaseViewModel
 
   @override
   login() async {
+    inputState.add(
+        LoadingState(stateRendererType: StateRendererType.POPUP_LOADING_STATE));
     (await _loginUseCase.execute(
             LoginUseCaseInput(loginObject.userName, loginObject.password)))
         .fold(
             (failure) => {
                   //left is failure
-                  print(failure.message)
+                  inputState.add(ErrorState(
+                      StateRendererType.POPUP_ERROR_STATE, failure.message))
                 },
             (data) => {
                   //right is success
-                  print(data.customer?.name)
+                  // print(data.customer?.name),
+                  inputState.add(ContentState())
+                  //navigate to main screen after login
                 });
   }
 

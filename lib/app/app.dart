@@ -4,6 +4,7 @@ import 'package:tut_app/presentation/resources/theme_manager.dart';
 
 class MyApp extends StatefulWidget {
   MyApp._internal(); //private named cinstructor
+  int appState = 0;
 
   static final MyApp instance = MyApp._internal(); // single instance
 
